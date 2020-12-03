@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- startup image for web apps - iPad - landscape (748x1024) 
+     Note: iPad landscape startup image has to be exactly 748x1024 pixels (portrait, with contents rotated).-->
+    <!--<link rel="apple-touch-startup-image" href="../images/ipad_landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />-->
+
+    <!-- startup image for web apps - iPad - portrait (768x1004) //-->
+    <!--<link rel="apple-touch-startup-image" href="../images/ipad_portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />-->
+
+    <!-- startup image for web apps (320x460) -->
+    <!--<link rel="apple-touch-startup-image" href="../images/iphone.png" media="screen and (max-device-width: 320px)" />-->
+
+    <meta name="apple-mobile-web-app-status-bar-style"  content="black" />
+    <link rel="apple-touch-icon"  href="../images/RemotEyeIcon.png" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="minimum-scale=1, maximum-scale=1, initial-scale=1" />
+    <link rel="shortcut icon" href="../images/RemotEyeIcon.ico" type="image/x-icon" />
+    <title>RemotEye Lite</title>
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" />-->
+    <link rel="stylesheet"  href="../style/jquery.mobile.css" />
+    <link rel="stylesheet"  href="../style/jquery.mobile.datebox.css" />
+    <link rel="stylesheet" href="../style/Mobile.css" />
+
+    <script type="text/javascript">
+      var el = document.createElement("canvas");
+      if (!(el.getContext && el.getContext('2d')))
+      {
+        window.location.href = "BrowserChoice.html";
+      }
+    </script>
+
+    <script type="text/javascript" src="../jslib/StringTable.js?v2.2.3"></script>
+    <script type="text/javascript" src="../jquery/jquery.js?v2.2.3"></script>
+
+
+    <script type="text/javascript">
+      $(document).bind("mobileinit", function() {        
+        // disable animation on Android        
+        if (navigator.userAgent.indexOf("Android") != -1)
+        {
+          $.extend($.mobile, {
+            defaultPageTransition: "none",
+            defaultDialogTransition: "none"
+          });
+        }
+        $(function() {
+          
+          $.extend($.mobile.datebox.prototype.options, {
+            overrideDateFormat: "%Y.%m.%d",
+          });
+          
+        });
+        
+      });
+    </script>
+    <script type="text/javascript" src="../jslib/Settings.js?v2.2.3" ></script> 
+    <script type="text/javascript" src="../jslib/application.js?v2.2.3"></script>    
+        
+<!--    <script type="text/javascript" src="../jquery/jquery.mobile.js"></script>
+    <script type="text/javascript" src="../jslib/Device.js" ></script>
+    <script type="text/javascript" src="../jquery/jquery.center.js"></script>
+    <script type="text/javascript" src="../jquery/jquery.mobile.datebox.js"></script>    
+    <script type="text/javascript" src="../jslib/eventsource.js" ></script>
+    <script type="text/javascript" src="../jslib/slider.js" ></script>
+    <script type="text/javascript" src="../jslib/SeriesPanel.js" ></script>
+    <script type="text/javascript" src="../jslib/Utils.js" ></script>                
+    <script type="text/javascript" src="../jslib/CredentialManager.js" ></script>
+    <script type="text/javascript" src="../jslib/Action.js" ></script>
+    <script type="text/javascript" src="../jslib/ToolsPanel.js" ></script>
+    <script type="text/javascript" src="../jslib/DesktopToolsPanel.js" ></script>
+    <script type="text/javascript" src="../jslib/MobileToolsPanel.js" ></script>
+    <script type="text/javascript" src="../jslib/MainViewPanel.js" ></script>
+    <script type="text/javascript" src="../jslib/GenericLayout.js" ></script>
+    <script type="text/javascript" src="../jslib/MobileLayout.js" ></script>
+    <script type="text/javascript" src="../jslib/DesktopLayout.js" ></script>
+
+    <script type="text/javascript" src="../jslib/Viewer.js" ></script>  
+    <script type="text/javascript" src="../jslib/Viewer.Cache.js" ></script>
+    <script type="text/javascript" src="../jslib/Manager.js" ></script>  
+    <script type="text/javascript" src="../jslib/Downloader.js" ></script> 
+    <script type="text/javascript" src="../jslib/DataSetStreamHandler.js" ></script> 
+    <script type="text/javascript" src="../jslib/DataSet.js" ></script> 
+    <script type="text/javascript" src="../jslib/WinLevLut.js" ></script>  
+    <script type="text/javascript" src="../jslib/DICOMImage.js" ></script>
+    <script type="text/javascript" src="../jslib/DICOMSR.js" ></script>
+    <script type="text/javascript" src="../jslib/DICOMPDF.js" ></script>
+    <script type="text/javascript" src="../jslib/InvalidDICOMImage.js" ></script>
+    <script type="text/javascript" src="../jslib/ViewingSeries.js" ></script>
+    <script type="text/javascript" src="../jslib/GlobalEventHandler.js" ></script>
+    <script type="text/javascript" src="../jslib/ToolsRepository.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/Shape.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/MeasLine.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/ReferenceLine.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/MeasRectArea.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/MeasElliptArea.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/MeasAngle.js" ></script>
+    <script type="text/javascript" src="../jslib/Shapes/MeasDensity.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/WindowLevel.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/Zoom.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/Pan.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/Scroll.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/MeasLine.js" ></script>    
+    <script type="text/javascript" src="../jslib/Tools/MeasRectArea.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/MeasElliptArea.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/MeasAngle.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/MeasDensity.js" ></script>
+    <script type="text/javascript" src="../jslib/Tools/Magnifier.js" ></script>
+    <script type="text/javascript" src="../jslib/ThumbnailPanel.js" ></script>
+    <script type="text/javascript" src="../jslib/HeartBeatThread.js" ></script>
+    <script type="text/javascript" src="../jslib/JPEGDownloadSerializer.js" ></script>-->
+
+    <script type="text/javascript" >
+
+      document.addEventListener("DOMContentLoaded", RELite.Manager.initWebApp, false);
+    </script>
+  </head>
+  <body >
+    <div data-role="page" data-theme="a" id="mainPage" style="height: 100%">
+      <div class="neoHeaderContainer">
+        <div id="neoHeader" >
+          <img src="../images/MainLogo.png" alt="RemotEye Logo" width="235" />
+        </div>
+      </div>
+
+      <div class="ui-content" role="main" style="background: transparent;" id="mainPageContent">        
+        <form id="authenticationForm" >         
+          <div id="PWD_EXPIRED_MSG" class="expiredPasswordMsg hidden"></div>
+          <label for="sUsername">Username </label>
+          <input type="text" id="sUsername" name="sUsername" value="" />                    
+          <div class="authentication visible">
+            <label for="sPassword">Password </label>
+            <input type="password" id="sPassword" name="sPassword" value="" />                                
+            <button id="requestAuthButton"><span id="LOGIN_BUTTON"></span></button>
+            <button id="changePasswordButton" type="button" class="hidden"><span id="CHANGE_PWD"></span></button>            
+          </div>
+          <div class="changePassword hidden">
+            <div class="input-field-wrapper">
+              <label for="sOldPassword" id="OLD_PWD">Old password </label>
+              <input type="password" id="sOldPassword" name="sOldPassword" value="" />                                
+              <div class="validation validate-ko"></div>
+            </div>
+            <div class="input-field-wrapper">
+              <label for="sNewPassword" id="NEW_PWD">New password </label>
+              <input type="password" id="sNewPassword" name="sNewPassword" value="" />
+              <div class="validation validate-ko"></div>
+            </div>
+            <div class="input-field-wrapper">
+              <label for="sNewPasswordConfirm" id="NEW_PWD_CONFIRM">New password (confirm) </label>
+              <input type="password" id="sNewPasswordConfirm" name="sNewPasswordConfirm" value="" />
+              <div class="validation validate-ko"></div>
+            </div>
+            <button type="button" id="updatePasswordButton"><span id="UPDATE_PWD"></span></button>
+            <button type="button" id="cancelUpdatePasswordButton"><span id="CANCEL2"></span></button>
+          </div>          
+        </form>        
+        <div id="needAuthentication">
+          <ul data-role="listview" data-inset="true" data-theme="a" >
+            <li data-role="list-divider" id="ACTIONS_TITLE"></li>
+            <li>
+              <a href="#findPage"><img src="../images/find.svg" alt="Search" width="64" style="margin-left: 8px;margin-top: 8px;"/><h3 id="SEARCH"></h3><p id="SEARCH_H"></p> </a>
+            </li>
+            <li>
+              <a href="Preferences.html?v2.2.3" ><img src="../images/settings.svg" width="64" alt="Settings"  style="margin-left: 8px;margin-top: 8px;" /><h3 id="SETTINGS"></h3><p id="SETTINGS_H"></p> </a>
+            </li>
+            <li>
+              <a href="About.html?v2.2.3" data-transition="pop" ><img src="../images/about.svg" width="64" alt="About"  style="margin-left: 8px;margin-top: 8px;" /><h3 id="ABOUT"></h3><p id="ABOUT_H"></p> </a>
+            </li>
+
+          </ul>
+
+          <a data-role="button" id="logoutButton" style="display: none" >Logout</a>
+
+        </div>
+        <div id="warningMessageContainer">
+          <table id="warningMessageTable">
+            <tr>
+              <td ><img src="../images/WarningWhite.png" align="absmiddle" style="padding: 5px;" /><span id="DISCLAIMER"></span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" class="findPage" id="findPage"  data-dom-cache="true" data-theme="a" style="height: 100%">
+      <div data-role="header" data-theme="a">
+        <a data-role="button" data-icon="arrow-l" href="#mainPage" data-inline="true" data-direction="reverse" id="BACK"></a>
+        <h1 id="FIND_PAGE_TITLE"></h1>
+        <a data-icon="home" data-iconpos="notext" href="#mainPage" data-direction="reverse">Home</a>
+      </div><!-- /header -->
+      <a data-role="button" href="#filterDialog" data-icon="search" id="SHOW_FILTER"></a>
+
+      <div class="ui-grid-b" data-theme="a">
+        <div class="ui-block-a" id="previousStudyPage">
+          <a href="#" data-role="button"  data-icon="arrow-l" id="PREVIOUS">Previous</a>
+        </div>
+        <div class="ui-block-b" >
+          <a href="" data-role="button" id="STUDIES_FOUND" data-corners="false" data-theme="a" ></a>
+        </div>
+        <div class="ui-block-c" id="nextStudyPage">
+          <a href="#" data-role="button"  data-icon="arrow-r" data-iconpos="right" id="NEXT">Next</a>
+        </div>
+
+      </div>
+      <div class="ui-content" role="main" id="studyListViewContainer" style="display: none" data-theme="a">
+        <ul></ul>
+      </div>
+    </div>
+
+    <div data-role="page" class="findSeriesPage" id="findSeriesPage" data-theme="a">
+      <div data-role="header" data-add-back-btn="true" data-theme="a">
+        <a data-role="button" data-icon="arrow-l" data-rel="back" data-inline="true" data-direction="reverse"></a>
+        <h1 id="SERIES_FOUND"></h1>
+        <a data-icon="home" data-iconpos="notext" href="#mainPage" data-direction="reverse">Home</a>
+      </div>
+      <div class="ui-content" role="main" data-theme="a" id="seriesListviewContainer" style="display: none">
+        <ul></ul>
+      </div>
+    </div>
+    
+    <div data-role="page" data-dialog="true" class="filterDialog" id="filterDialog" data-theme="a" data-dom-cache="true" >
+
+      <div data-role="header" data-theme="a">
+        <h1 id="FIND_PAGE_TITLE1"></h1>
+      </div><!-- /header -->
+
+      <div class="ui-content" role="main" >
+        <div class="ui-field-contain">
+          <label for="sPatientName" id="PATIENT_NAME1"></label>
+          <input type="text" name="sPatientName" id="sPatientName" value=""  />
+        </div>
+        <div class="ui-field-contain">
+          <label for="sPatientID" >Patient ID</label>
+          <input type="text" name="sPatientID" id="sPatientID" value=""  />
+        </div>
+        <div class="ui-field-contain">
+          <label for="sReferringPhysName" >Referring Physician Name</label>
+          <input type="text" name="sReferringPhysName" id="sReferringPhysName" value=""  />
+        </div>
+        <div class="ui-field-contain">
+          <label for="sAccessionNumber" >Accession Number</label>
+          <input type="text" name="sAccessionNumber" id="sAccessionNumber" value=""  />
+        </div>
+        <div class="ui-field-contain">
+          <label for="sStudyDescr" id="STUDY_DESCR"></label>
+          <input type="text" name="sStudyDescr" id="sStudyDescr" value=""  />
+        </div>
+        <div class="ui-field-contain">
+          <label for="sModality" id="MODALITY"></label>
+          <input type="text" name="sModality" id="sModality" value=""  />
+        </div>
+        <div id="dateRadio">
+          <fieldset data-role="controlgroup" data-type="horizontal" class="studyDateRadio">            
+            <input type="radio" name="studyDateRadio" id="bToday" value="today"  />
+            <label for="bToday" id="TODAY">Today</label>
+            <input type="radio" name="studyDateRadio" id="bLastWeek" value="lastWeek"  />
+            <label for="bLastWeek" id="LAST_WEEK">Last Week</label>
+            <input type="radio" name="studyDateRadio" id="bLastMonth" value="lastMonth"  />
+            <label for="bLastMonth" id="LAST_MONTH">Last Month</label>
+            <input type="radio" name="studyDateRadio" id="bWhenever" value="whenever"  />
+            <label for="bWhenever" id="WHENEVER">Whenever</label>
+          </fieldset>
+        </div>
+        <div class="ui-field-contain">
+          <p id="STUDY_DATE_START"></p>
+          <input value="" name="date1" type="text" id="sStudyDateStart" data-role="datebox" data-options='{"mode": "datebox"}' data-theme="a" />
+        </div>
+        <div class="ui-field-contain">
+          <p id="STUDY_DATE_END"></p>
+          <input value="" name="date2" type="text" id="sStudyDateEnd" data-role="datebox" data-options='{"mode": "datebox"}' data-theme="a"/>
+        </div>
+        <div id="queryAETitles">
+          <div class="ui-field-contain">
+            <label for="sCallingAETitle" class="select">Calling AE Title:</label>
+            <select name="sCallingAETitle" id="sCallingAETitle">
+
+            </select>
+          </div>
+          <div class="ui-field-contain">
+            <label for="sCalledAETitle" class="select">Called AE Title:</label>
+            <select name="sCalledAETitle" id="sCalledAETitle">
+
+            </select>
+          </div>
+        </div>
+        <a id="saveFilterButton" data-role="button" href="#findPage" ></a>
+        <a data-role="button" href="#findPage" id="CANCEL1"></a>
+      </div>
+    </div>
+    
+    <div data-role="page" class="viewerPage" id="viewerPage" data-theme="f">
+      <div data-role="panel" id="drawer" data-theme="a" data-display="overlay">     
+        <div id="drawerActionContainer">
+
+        </div>
+        <div class="ui-content">
+          <div>
+            <button data-href="Preferences.html?v2.2.3" data-role="button" id="PREFERENCES" class="ui-btn ui-corner-all preferencesButton"></button>
+            <button data-href="About.html?v2.2.3" data-role="button" id="ABOUT1" class="ui-btn ui-corner-all aboutButton"></button>
+          </div>
+        </div>
+      </div>
+      <div >
+        <!--
+          The Android stock browser renders the svg images quite blurry
+          if some text is not renderized before them.
+        -->
+        Hack
+      </div>      
+       <!-- Window/Level Presets -->
+      <div id="windowLevelPresetsPopup" data-role="popup" data-theme="b">
+        <ul data-role="listview" data-inset="true" >                                         
+        </ul>
+      </div>
+       <!-- Reports popup -->
+      <div id="reportsPopup" data-role="popup" data-theme="b">
+        <ul data-role="listview" data-inset="true" >                                         
+        </ul>
+      </div>
+      <div id="toolbarContainer">
+      <div style="float: left;margin: 0px; padding: 0px; height: 48px; " id="tools">        
+        <div class="actionContainer" id="scroll">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.SelectStack.svg" ></image>
+          </svg>                
+        </div>
+        <div class="actionContainer" id="pan">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.Pan.svg" ></image>
+          </svg>                
+        </div>
+        <div class="actionContainer" id="zoom">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.Zoom.svg" ></image>
+          </svg>                
+        </div>
+        <div class="actionContainer selected" id="windowLevel">
+          <svg  height="48" width="80" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+            <rect width="48" height="48"  fill="#7be1b2" ></rect>
+            <rect x="48" width="32" height="48"  fill="#ebebeb" ></rect>
+            <svg x="58" y="19">
+            <polygon points="0,0 10,0 5,10 0,0" fill="5c5c5c" ></polygon>
+            </svg>
+            <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.WindowLevel.svg" ></image>
+          </svg>    
+        </div>
+        <div class="actionContainer" id="measMenu">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.MeasDistance.svg" id="measMenuImage"></image>
+          <svg x="38" y="38">
+          <polygon points="0,0 6,0 3,6 0,0" fill="5c5c5c" ></polygon>
+          </svg>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="measLineTool">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.MeasDistance.svg" ></image>
+          </svg>       
+        </div>
+        <div class="actionContainer" id="measRectAreaTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.MeasRectArea.svg" ></image>
+          </svg>    
+        </div>
+        <div class="actionContainer" id="measElliptAreaTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.MeasElliptArea.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="measAngle">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.MeasAngleA.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="measDensity">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.MeasDensity.svg" ></image>
+          </svg>               
+        </div>
+        <div class="actionContainer" id="magnifier">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/tool.Magnifier.svg" ></image>
+          </svg>               
+        </div>
+        <div class="actionContainer" id="resetTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.resetImage.svg" ></image>
+          </svg>   
+        </div>
+      </div>
+      <div style="float: right;margin: 0px; padding: 0px; height: 48px; " id="rightToolbar">
+        <div class="actionContainer" id="forceCineTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.forceCine.svg" ></image>
+          </svg>
+        </div>
+        <div class="actionContainer" id="rotateCounterClockwiseTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.rotateCounterClockwise.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="rotateClockwiseTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.rotateClockwise.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="flipHorizontalTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.flipHorizontal.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="flipVerticalTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.flipVertical.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="prevSeriesTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.prevSeries.svg" ></image>
+          </svg>
+        </div>
+        <div class="actionContainer" id="nextSeriesTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.nextSeries.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="prevFrameTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.navigatePreviousFrame.svg" ></image>
+          </svg>
+        </div>
+        <div class="actionContainer" id="nextFrameTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.navigateNextFrame.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="showThumbnails">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.showThumbnailPanel.svg" ></image>
+          </svg>      
+        </div>
+        <div class="actionContainer" id="selectLayoutTool">
+          <svg  height="48" width="48" 
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.displayMode.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="overlayTool">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#7be1b2" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.imageToggleTextOverlays.svg" ></image>
+          </svg>  
+        </div>
+        <div class="actionContainer" id="invertImage">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.imageInvert.svg" ></image>
+          </svg>  
+        </div>
+        <div class="actionContainer" id="showReports">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.reportingViewReport.svg" ></image>
+          </svg>  
+        </div>
+        <div class="actionContainer" id="goBack">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.goBack.svg" ></image>
+          </svg>        
+        </div>
+        <div class="actionContainer" id="menuOverflow">
+          <svg height="48" width="48" 
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.menuOverflow.svg" ></image>
+          </svg>   
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>       
+      <div id="viewerContainer" style="background-color: black; position: absolute; top: 48px; left: 0px;padding: 0px; margin: 0px; border: none;line-height: 0" ></div>          
+      <!-- Layout Dialog //-->
+      <div id="layoutDialog" >
+        <table style="width: 100%">
+          <tr>
+            <td>1x1</td><td>1x2</td><td>1x3</td>
+          </tr>
+          <tr>
+            <td>2x1</td><td>2x2</td><td>2x3</td>
+          </tr>
+          <tr>
+            <td>3x1</td><td>3x2</td><td>3x3</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="seriesActionsPanel" id="seriesActionsPanel">
+        <svg id="prevSeriesSliderTool" height="48" width="48" 
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+        <rect width="48" height="48"  fill="#ebebeb" >          
+        </rect>
+        <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.prevSeries.svg" ></image>
+        </svg>
+        <svg id="nextSeriesSliderTool" height="48" width="48" 
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+        <rect width="48" height="48"  fill="#ebebeb" >          
+        </rect>
+        <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.nextSeries.svg" ></image>
+        </svg>
+        <svg id="playAction" height="48" width="48" 
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+        <rect width="48" height="48"  fill="#ebebeb" >          
+        </rect>
+        <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.play.svg" ></image>
+        </svg>
+        <!--      <svg id="pauseAction" height="48" width="48" 
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                <rect width="48" height="48"  fill="#ebebeb" >          
+                </rect>
+                <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.pause.svg" ></image>
+              </svg>-->
+        <!-- 
+        <svg id="stopAction" height="48" width="48" 
+              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >          
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.stop.svg" ></image>
+        </svg>
+        //-->
+        <!--      <span id="DEF_FPS" style="position:relative; bottom: 17px; color: #f7f7f7">Frames per second: </span>
+              <span id="defFPS" style="position:relative; bottom: 17px; color: #f7f7f7"></span>-->
+        <svg id="slider" height="48" width="200" 
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+        <rect width="170" y="21" x="15" height="6"  fill="#eee" class="bar">          
+        </rect>
+        <svg height="48" width="30" x="0" class="picker">
+        <rect y="9" x="0" rx="3" ry="3" height="30"  width="30" fill="#6ebceb">          
+        </rect>            
+        <text x="5" y="28" fill="white" class="text" ></text>          
+        </svg>
+
+
+        </svg>
+      </div>
+      <img src="../images/cine.png" style="display: none" id="cineImg" />
+      <div id="reportToolbar">
+        <div class="reportCloseButtonContainer">
+          <div class="actionContainer" id="closeReport">
+            <svg height="48" width="48" 
+                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+            <rect width="48" height="48"  fill="#ebebeb" >          
+            </rect>
+            <image x="8" y="8" height="32" width="32"  xlink:href="../images/svgs/action.goBack.svg" ></image>
+            </svg>        
+          </div>
+        </div>         
+      </div>
+      <div id="reportContainer">          
+      </div>
+      <div id="openDialogOverlay"></div>
+      <div id="openDialog">
+        <div class="openDialogContent">
+          <div class="warning" id="WARNING">Warning</div>
+          <div id="WARN_POPUP_BLOCKED">Your browser blocked the RemotEye Lite attempt of opening the file.</div>
+          <div id="WARN_POPUP_SOLUTION">
+            <span id="WARN_POPUP_SOLUTION_A">Update your browser's settings or click</span>
+            <a target="blank" class="fileLink" id="HERE">here</a>
+            <span id="WARN_POPUP_SOLUTION_B">to open the file manually.</span></div>                 
+          <div class="dismiss">
+            <a id="DISMISS">Dismiss</a>
+          </div>
+        </div>
+      </div>            
+      <div data-role="popup" id="errorPopup" data-theme="b">
+        <div id="WARN_DECODING_ERRORS">Warning RemotEye Lite encountered some errors while retrieving the exam.</div>
+      </div>
+      <div id="scrollBarPickerPopupContainer" class="hidden">
+        <div class="relative">
+          <div class="scrollbar-picker-popup">
+            <span id="scrollBarPikerFrameNum"></span>
+          </div>
+          <div class="scrollbar-picker-popup-indicator"></div>
+        </div>
+      </div>
+    </div>
+    <div id="logoffDlgOverlay"></div>
+    <div id="logoffDialog">
+      <div class="logoffDialogContent">
+        <div class="warning" id="AUTO_LOGOFF_DLG_TITLE"></div>
+        <div id="AUTO_LOGOFF_MSG1"></div>
+        <div >
+          <br />
+          <span id="AUTO_LOGOFF_MSG2"></span>      
+        </div>                     
+        <div id="logoffCounter"><span id="AUTO_LOGOFF_COUNTER"></span> <span id="remainingLogoffSecs">0</span> <span id="SECONDS"></span></div>
+      </div>
+    </div>  
+    <div id="loggedOffDialog">
+      <div class="loggedOffDialogContent">
+        <div class="warning" id="AUTO_LOGOFF_DLG_TITLE1"></div>        
+        <div class="loggedOffMsgContainer">
+          <br /><br />
+          <span id="LOGGEDOFF_MSG"></span>      
+        </div>                             
+      </div>
+    </div>  
+  </body>
+</html>

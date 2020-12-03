@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" inkscape:version="0.48.3.1 r9886" sodipodi:docname="esp.svg" inkscape:export-ydpi="90" inkscape:export-xdpi="90" inkscape:export-filename="C:\Users\Carlo\Desktop\esp.png" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="256px" height="256px"
+	 viewBox="0 0 256 256" enable-background="new 0 0 256 256" xml:space="preserve">
+<polygon display="none" fill="#A38961" points="235.75,252.419 20.25,128 235.75,3.581 "/>
+<g>
+	<g>
+		<g>
+			<g>
+				<polygon fill="#D6D6D6" points="83.753,96.79 159.521,51.98 158.698,67.618 82.933,112.425 				"/>
+				<g>
+					<circle fill="#2E74A7" cx="185.051" cy="50.568" r="40.876"/>
+					<circle fill="#FFFFFF" cx="185.051" cy="50.568" r="20.439"/>
+				</g>
+			</g>
+			<g>
+				<polygon fill="#D6D6D6" points="83.114,158.609 159.448,203.754 158.621,188.002 82.289,142.857 				"/>
+				<g>
+					<circle fill="#2E74A7" cx="185.707" cy="205.329" r="40.875"/>
+					<circle fill="#FFFFFF" cx="185.708" cy="205.329" r="20.439"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<circle fill="#2E74A7" cx="62.121" cy="128" r="40.876"/>
+			<circle fill="#FFFFFF" cx="62.121" cy="128" r="20.438"/>
+		</g>
+	</g>
+	<path fill="#2E74A7" d="M194.175,128c0,4.518-2.745,8.174-6.131,8.174h-42.239c-3.386,0-6.132-3.656-6.132-8.174l0,0
+		c0-4.516,2.746-8.174,6.132-8.174h42.239C191.43,119.825,194.175,123.483,194.175,128L194.175,128z"/>
+</g>
+</svg>

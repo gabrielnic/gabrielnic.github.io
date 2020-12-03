@@ -1,0 +1,305 @@
+
+div.NeoItemDiv
+{
+  text-align: left;
+  border: 1px solid silver;
+  border-top: none;
+  background-color: #f4f4f4;
+  margin: 0px;
+}
+
+div.NeoItemDiv.odd
+{
+  text-align: left;
+  border: 1px solid silver;
+  border-top: none;
+  background-color: #fefefe;
+}
+
+div.NeoItemDiv.locked, div.NeoItemDiv.odd.locked
+{
+  background-color: #e78c8c;
+}
+
+div.NeoItemDiv table
+{
+  width: 100%;
+  text-align: left;
+  color: #555;
+}
+
+div.NeoItemDiv table td.Selector
+{
+  width: 64px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+div.NeoItemDiv table td.Selector input
+{
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+}
+
+div.NeoItemDiv table td.Selector img
+{
+  cursor: pointer;
+}
+
+div.NeoItemDiv table td span.Gender
+{
+  margin-right: 5px;
+  display:inline-block;
+  width: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 20px;
+}
+
+div.NeoItemDiv table td.PatientName
+{
+  height: 30px;
+  color: #1f497d;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+div.NeoItemDiv table td.StudyDescription
+{
+  color: #44b3ea;
+  height: 30px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+div.NeoItemDiv table td.StudyDate
+{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+div.NeoItemDiv table td.StudyDate span
+{
+  font-weight: normal;
+  font-size: 14px;
+}
+
+div.NeoItemDiv table table.OtherInfo
+{
+  font-weight: bold;
+}
+div.NeoItemDiv table table.OtherInfo td
+{
+  padding: 2px;
+}
+
+div.NeoItemDiv table table.OtherInfo span
+{
+  font-weight: normal;
+}
+
+div.NeoItemDiv span.showNONDICOMIcon
+{
+  display: inline-block;
+  
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/nonDICOMAss.gif');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  
+}
+
+div.NeoItemDiv span.showNONDICOMIcon.loading
+{
+  background-image: url('../images/ajax-loader-mini.gif');
+}
+
+div.NeoItemDiv div.nonDICOMFilesPanel
+{
+  background-color: white;
+  border: double silver;
+  padding: 2px;
+  display: none;
+  width: 200px;
+  position: absolute;
+}
+
+div.NeoItemDiv div.nonDICOMFilesPanel div.sectionHeader
+{
+  background-color: silver;
+  margin: 3px;
+  color: black;
+  line-height: 16px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+div.NeoItemDiv div.nonDICOMFilesPanel div.nonDICOMFile
+{
+  margin: 3px;
+  width: 200px;
+  height: 21px;
+  line-height: 21px;
+  vertical-align: middle;
+  clear: both;
+}
+
+div.NeoItemDiv div.nonDICOMFilesPanel div.nonDICOMFile span.nonDICOMFileRemover
+{
+  display: inline-block;
+  float:right;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/task-delete.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+div.NeoItemDiv div.nonDICOMFilesPanel div.nonDICOMFile span.nonDICOMFileLink
+{
+  float: right;
+}
+
+div.infoLoading
+{
+  height: 100px;
+  background-image: url('../images/ajax-loader.gif');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+div.srFileChooser
+{
+  background-color: white;
+  border: double silver;
+  padding: 2px;
+  display: none;
+  width: 400px;
+  position: absolute;
+}
+
+div.srFileChooser div.srLine
+{
+  clear: both;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+div.srFileChooser div.srHeaderLine
+{
+  clear: both;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  border-top: 1px solid silver;
+  text-align: center;
+  font-weight: bold;
+  background-color: #f3f3f3;
+  z-index: 6;
+}
+
+div.srFileChooser div.srLine
+{
+  clear: both;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  text-align: right;
+  cursor: pointer;
+}
+
+div.srFileChooser div.srLine:hover
+{
+  background-color: #c8e9ff;
+}
+
+div.srFileChooser div.srLine span
+{
+  padding-right: 3px;
+}
+div.srFileChooser div.seriesDate
+{
+  width: 150px;
+  float: left;
+  border: 1px solid silver;
+  border-top: none;
+  
+}
+
+div.srFileChooser div.seriesNum
+{
+  width: 100px;
+  float: left;
+  border: 1px solid silver;
+  border-top: none;
+  border-left: none;
+  
+}
+
+div.srFileChooser div.instanceNum
+{
+  width: 146px;
+  float: right;
+  border: 1px solid silver;
+  border-top: none;
+  border-left: none;
+  
+}
+
+div.srFileChooser div.sopInstanceUID
+{
+  display: none;
+}
+
+div.srFileChooser div.srFileChooserButton
+{
+  margin-top: 10px;
+  width: 100%;
+  text-align: right;
+}
+
+
+.OpenInfoButton a, a.OpenInfoButton
+{
+  display:inline;
+  width:16px;
+  height:16px;
+  background-image:url('../images/buttons.gif');
+  background-repeat:no-repeat;
+  text-decoration:none;
+  background-position:0px -113px;
+  cursor:pointer;
+}
+
+.OpenInfoButton a:hover, a:hover.OpenInfoButton
+{
+  background-position:0px -398px;
+}
+
+.CloseInfoButton a, a.CloseInfoButton
+{
+  display:inline;
+  width:16px;
+  height:16px;
+  background-image:url('../images/buttons.gif');
+  background-repeat:no-repeat;
+  text-decoration:none;
+  background-position:0px -144px;
+  cursor:pointer;
+}
+
+.CloseInfoButton a:hover, a:hover.CloseInfoButton
+{
+  background-position:0px -429px;
+}

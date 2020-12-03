@@ -1,0 +1,835 @@
+html
+{  
+  margin: 0px;
+  padding: 0px;   
+  height: 100%;
+  width: 100%;    
+  /**overflow: hidden; **/
+}
+
+body
+{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;  
+  background-color: black;    
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+*
+{
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  font-family: sans-serif;
+}
+
+div.neoHeaderContainer
+{
+  background: transparent url(../images/headerBackground.jpg) top left repeat-x; 
+  padding: 0px;
+  margin: 0px;
+}
+
+#neoHeader 
+{ 
+  background: transparent url(../images/HeaderImage.png) top center no-repeat; 
+  text-align: center; 
+  border-bottom: 1px solid #ccc;
+}
+
+canvas 
+{
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+
+.canvasLoader
+{
+  background-image: url('../images/canvasLoading.png');
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+div.actionContainer,
+button.actionContainer
+{
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+  line-height: normal;
+  cursor: pointer;
+  border: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.tool, .toolButton
+{
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  z-index: 16;
+  display: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.tool.wl
+{
+  background-image: url('../images/wlTool.png');
+}
+
+.tool.pan
+{
+  background-image: url('../images/panTool.png');
+}
+
+.tool.zoom
+{
+  background-image: url('../images/zoomTool.png');
+}
+
+.tool.scroll
+{
+  background-image: url('../images/scrollTool.png');
+}
+
+.toolButton.prevFrame
+{
+  background-image: url('../images/prevFrameTool.png');
+}
+
+.toolButton.nextFrame
+{
+  background-image: url('../images/nextFrameTool.png');
+}
+
+.toolButton.select
+{
+  background-image: url('../images/changeTool.png');
+}
+
+.toolButton.reset
+{
+  background-image: url('../images/resetTool.png');
+}
+
+.toolButton.overlay.selected
+{
+  background-image: url('../images/overlayToolSelected.png');
+}
+
+.toolButton.overlay.all
+{
+  background-image: url('../images/overlayToolAll.png');
+}
+
+.toolButton.overlay
+{
+  background-image: url('../images/overlayTool.png');
+}
+
+.tool.line
+{  
+  background-image: url('../images/lineTool.png');
+}
+
+.toolButton.selectLayout
+{
+  background-image: url('../images/selectLayoutTool.png');
+}
+
+.tool.wl.selected
+{
+  background-image: url('../images/wlToolSelected.png');
+}
+
+.tool.pan.selected
+{
+  background-image: url('../images/panToolSelected.png');
+}
+
+.tool.zoom.selected
+{
+  background-image: url('../images/zoomToolSelected.png');
+}
+
+.tool.scroll.selected
+{
+  background-image: url('../images/scrollToolSelected.png');
+}
+
+.tool.line.selected
+{
+  background-image: url('../images/lineToolSelected.png');
+}
+
+.toolButton.chooseSeries
+{
+  background-image: url('../images/chooseSeriesTool.png');
+}
+
+.toolButton.chooseSeries.selected
+{
+  background-image: url('../images/chooseSeriesToolSelected.png');
+}
+
+.toolButton.prevFrame.selected
+{
+  background-image: url('../images/prevFrameToolSelected.png');
+}
+
+.toolButton.nextFrame.selected
+{
+  background-image: url('../images/nextFrameToolSelected.png');
+}
+
+
+
+.toolButton.selectLayout.selected
+{
+  background-image: url('../images/selectLayoutToolSelected.png');
+}
+
+#errorMessageDiv
+{
+  border-radius: .6em;
+  background-color: #ff6666;
+  color: white;
+  width: 95%;
+  text-align: center;
+  
+  font-weight: bold;
+  line-height: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  vertical-align: middle;
+  margin: auto;
+  text-shadow: none;
+  margin-bottom: 8px;
+}
+
+#warningMessageContainer
+{
+  border-radius: .6em;
+  background-color: #bbb;  
+  text-align: center;  
+  vertical-align: middle;
+  margin: auto;
+  border: 1px solid #aaa;
+  width: 95%;  
+  font-weight: bold;
+}
+
+#warningMessageTable
+{
+  height: 60px;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+#syncDiv
+{
+  background-image: url('../images/sync_green.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  float:left; 
+  width: 30%;
+  height: 80px;
+}
+
+#syncArrow
+{
+  background-image: url('../images/sync_arrow.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 80px;
+}
+
+div#displayAuthDialog
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 100;
+  color: white;
+  top: 0px;
+  left: 0px;
+  display: none;
+  text-align: left;
+}
+
+div#displayAuthDialog table
+{
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.aboutTable
+{
+  line-height: 20px; 
+  text-align: center; 
+  vertical-align: middle;
+}
+
+table.aboutTable td.logo
+{
+  width: 48px;
+  text-align: center;
+  vertical-align: top;
+  padding: 5px;
+  padding-top: 17px;
+}
+
+table.aboutTable td
+{
+  text-align: justify;
+  padding: 5px;
+}
+
+.ui-dialog-contain 
+{
+  max-width: 600px;
+}
+
+div#toolbarContainer
+{  
+  background-color: #7a7a7a;    
+  margin: 0px;
+  padding: 0px;  
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+div#toolbarContainer svg
+div#seriesActionsPanel svg
+{
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}
+
+div#overflowMenu
+{  
+  display: none;
+  position: absolute;
+  top: 48px;
+  right: 0px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+  z-index: 16;
+}
+
+div#overflowMenu > div.menuItem
+{
+  background-color: #efefef;
+  color: #5d5d5d;
+  padding: 8px;
+  border-bottom: 1px solid #dadada;
+  cursor: pointer;  
+  display: none;
+}
+
+#layoutDialog
+{
+  position: absolute; 
+  display: none;
+  width: 200px; 
+  height: 200px;
+  background-color: #efefef;   
+  color: #5d5d5d;
+  padding: 10px;
+  font-size: 13pt;
+  border: 1px solid #dadada;  
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+  z-index: 1002;
+}
+
+#layoutDialog table td
+{
+  width: 64px;
+  height: 64px;      
+  font-size: 88%;
+  cursor: pointer;
+  text-align: center;
+  background-color: #d0d0d0;
+}
+
+div.seriesActionsPanel
+{
+  position: absolute;
+  display: none;
+  background-color: #7a7a7a;
+  height: 48px;
+  bottom: -48px;
+  border-radius: 4px;
+  /*opacity: .8;*/
+  text-align: left;
+}
+
+div.slider
+{
+  clear: right;
+  width: 300px;
+  height: 20px;
+  background-color: #eee;
+}
+
+.picker
+{
+  cursor: pointer !important;
+}
+
+[draggable]
+{
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+#drawer
+{
+  margin-top: 48px;
+  position: fixed;
+}
+
+#drawer .ui-panel-inner
+{
+  margin: 0px;
+  padding: 0px;
+}
+
+div#drawer div#drawerActionContainer
+{
+  background-color: #7a7a7a;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#windowLevelPresetsPopup
+{
+  max-height: 305px;
+  overflow-y: auto;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+div#windowLevelPresetsPopup ul li
+{
+  cursor: pointer;
+}
+
+div.settingsDlg
+{
+  z-index: 15;
+}
+
+div#windowLevePresetDetailDlg,
+div#aboutDlg
+{
+  background-color: rgb(249,249,249)!important;
+  z-index: 16;
+}
+
+#reportToolbar
+{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 16;
+  background-color: #7a7a7a;    
+  border-bottom: 1px solid #444;
+  display: none;
+}
+
+.reportCloseButtonContainer
+{
+  float: right;
+  margin: 0px; 
+  padding: 0px; 
+  height: 48px;
+}
+
+#reportContainer
+{
+  position: fixed;
+  top: 49px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: none;
+  background-color: white;  
+  z-index: 16;
+  overflow-y: scroll;
+  text-align: left;
+  padding: 15px;
+}
+
+#openDialogOverlay
+{
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: none;
+  background-color: transparent;  
+  z-index: 16;  
+  text-align: left;  
+}
+
+#openDialog,
+#logoffDialog,
+#loggedOffDialog
+{
+  position: fixed;
+  display: none;
+  background-color: white;
+  border-radius: 5px;
+  width: 400px;
+  height: 300px;
+  padding: 25px;
+  top: 50%;
+  left: 50%;
+  margin-left: -225px;
+  margin-top: -175px;
+  z-index: 17;  
+  text-align: left;
+}
+
+@media only screen and (max-width: 500px)
+{
+  #openDialog,
+  #logoffDialog,
+  #loggedOffDialog
+  {
+    position: fixed;
+    display: none;
+    background-color: white;
+    border-radius: 5px;
+    width: 350px;
+    height: 300px;
+    padding: 5px;
+    top: 50%;
+    left: 50%;
+    margin-left: -180px;
+    margin-top: -155px;
+    z-index: 17;  
+    text-align: left;
+  }
+  
+  #logoffCounter
+  {
+    position: absolute;
+    bottom: 5px;
+    text-align: right;
+    right: 0px;
+    font-weight: bold;
+    font-size: 1.0em;
+  }
+}
+
+#openDialog .openDialogContent > div,
+#logoffDialog .openDialogContent > div
+{
+  margin-top: 5px;
+}
+
+#openDialog .warning,
+#logoffDialog .warning,
+#loggedOffDialog .warning
+{
+  font-size: 1.5em;
+  border-bottom: 1px solid #2E74A7;
+  padding: 5px 0px 15px 0px;
+  margin-top: 0px;
+  margin-bottom: 25px;      
+}
+
+#openDialog .openDialogContent,
+.logoffDialogContent
+{
+  position: relative;
+  height: 100%;
+}
+
+#openDialog div.dismiss
+{
+  position: absolute;
+  right: 0px;
+  bottom: 10px;
+}
+
+#openDialog div.dismiss a
+{
+  cursor: pointer;
+}
+
+canvas.magnifier
+{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 100;
+  display: none;
+}
+
+@media only screen and (min-width: 200px)
+{
+  
+}
+
+@media only screen and (min-width: 500px)
+{
+  div#reportsPopup
+  {
+    min-width: 400px;
+  }
+}
+
+
+
+div#reportsPopup ul li
+{
+  cursor: pointer;
+}
+
+#reportsPopup ul li img 
+{
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.report-flag
+{
+  font-size: .8em;
+  vertical-align: middle;
+}
+
+#errorPopup > div
+{
+  padding: 15px;
+  
+}
+
+div.series-panel-container
+{
+  position: relative;
+  display: inline-block;
+  border: 1px solid #333; 
+}
+
+
+
+div.quick-scrollbar
+{  
+  position: absolute;
+  width: 17px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;  
+  background-color: #232323;
+  border-left: 1px solid #323232;  
+}
+
+div.series-panel-container.smartphone div.quick-scrollbar,
+div.series-panel-container div.quick-scrollbar.hidden
+{
+  display: none;
+}
+
+div.quick-scrollbar div.scrollbar-picker
+{
+  position: absolute;  
+  
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 16px;
+  background-color: #5a5a5a;  
+  border: 1px solid #555050;
+  cursor: pointer;
+  background-image: url('../images/scrollbar-handler.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+
+.relative 
+{
+  position: relative;
+}
+
+.hidden,
+div.series-panel-container.detail-panel.hidden
+{
+  display: none;
+}
+
+div.series-panel-container canvas.series-panel 
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;  
+}
+
+#scrollBarPickerPopupContainer
+{
+  position: absolute;
+  width: 48px;    
+  text-align: center;
+}
+
+#scrollBarPickerPopupContainer .relative
+{
+  width: 100%;
+  height: 100%;
+}
+
+#scrollBarPickerPopupContainer .scrollbar-picker-popup
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 44px;
+  height: 24px;
+  background-color: #5a5a5a;
+  border-radius: 4px;
+  line-height: 24px;
+  vertical-align: middle;
+  font-size: 11px;
+  color: #1a1a1a;
+  text-shadow: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#scrollBarPickerPopupContainer .scrollbar-picker-popup-indicator
+{
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 4px;
+  height: 4px;
+  background-color: transparent;  
+  background-image: url('../images/pointer.svg');
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+#scrollBarPikerFrameNum
+{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.expiredPasswordMsg
+{
+  font-weight: bold;
+  padding: 8px 0px;
+}
+
+
+div.input-field-wrapper
+{
+  position: relative;
+}
+
+div.validation
+{
+  position: absolute;
+  width: 24px;
+  height: 24px;  
+  right: 8px;
+  bottom: 6px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+div.validation.validate-ko
+{
+  background-image: url('../images/svgs/validate-ko.svg');  
+}
+
+div.validation.validate-ok
+{
+  background-image: url('../images/svgs/validate-ok.svg');  
+}
+
+
+#logoffDlgOverlay
+{
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: none;
+  background-color: rgba(0,0,0, 0.15);  
+  z-index: 16;  
+  text-align: left;  
+}
+
+#logoffCounter
+{
+  position: absolute;
+  bottom: 5px;
+  text-align: right;
+  right: 0px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.loggedOffMsgContainer
+{
+  text-align: center;
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width: 500px)
+{    
+  #logoffCounter
+  {
+    position: absolute;
+    bottom: 5px;
+    text-align: right;
+    right: 0px;
+    font-weight: bold;
+    font-size: 1.0em;
+  }
+}

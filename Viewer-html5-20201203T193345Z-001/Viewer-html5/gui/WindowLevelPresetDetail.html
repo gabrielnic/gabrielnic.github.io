@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>Window/Level Preset</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div data-role="page" data-dialog="true" id="windowLevePresetDetailDlg" data-close-btn="none" data-theme="a" >
+      <div>
+        <div data-role="header" >
+          <h1 id="WINLEVELPRESET1"></h1>
+        </div>
+      </div>
+      <div class="ui-content" >
+        <div class="ui-field-contain">
+          <label for="sPresetDescription" id="DESCRIPTION1">Description</label>
+          <input type="text" id="sPresetDescription" />
+        </div>
+        <div class="ui-field-contain">
+          <label for="sPresetModality" id="MODALITY1">Modality</label>
+          <select name="sPresetModality" id="sPresetModality">
+            <option value="*">Any</option>
+            <option value="AU">AU</option>
+            <option value="BI">BI</option>
+            <option value="CD">CD</option>
+            <option value="CR">CR</option>
+            <option value="CT">CT</option>
+            <option value="DD">DD</option>
+            <option value="DG">DG</option>
+            <option value="DX">DX</option>
+            <option value="ECG">ECG</option>
+            <option value="EPS">EPS</option>
+            <option value="ES">ES</option>
+            <option value="GM">GM</option>
+            <option value="HC">HC</option>
+            <option value="HD">HD</option>
+            <option value="IO">IO</option>
+            <option value="IVUS">IVUS</option>
+            <option value="KO">KO</option>
+            <option value="LS">LS</option>
+            <option value="MG">MG</option>
+            <option value="MR">MR</option>
+            <option value="NM">NM</option>
+            <option value="OP">OP</option>
+            <option value="OT">OT</option>
+            <option value="PR">PR</option>
+            <option value="PT">PT</option>
+            <option value="PX">PX</option>
+            <option value="RF">RF</option>
+            <option value="RG">RG</option>
+            <option value="RTDOSE">RTDOSE</option>
+            <option value="RTIMAGE">RTIMAGE</option>
+            <option value="RTPLAN">RTPLAN</option>
+            <option value="RTRECORD">RTRECORD</option>
+            <option value="RTSTRUCT">RTSTRUCT</option>
+            <option value="SC">SC</option>
+            <option value="SM">SM</option>
+            <option value="SMR">SMR</option>
+            <option value="SR">SR</option>
+            <option value="ST">ST</option>
+            <option value="TG">TG</option>
+            <option value="US">US</option>
+            <option value="XA">XA</option>
+            <option value="XC">XC</option>
+          </select>    
+        </div>
+        <div class="ui-field-contain">
+          <label for="sPresetWidth" id="WINWIDTH">Window width</label>
+          <input type="number" id="sPresetWidth"/>
+        </div>
+        <div class="ui-field-contain">
+          <label for="sPresetLevel" id="WINLEV">Window level</label>
+          <input type="number" id="sPresetLevel"/>
+        </div>
+        <button id="saveWindowLevelPresetButton" >Save</button>
+        <button id="cancelWindowLevelPresetButton" >Cancel</button>
+      </div>
+      <div data-role="popup" id="winLevelPresetErrorPopup" data-overlay-theme="b" data-theme="a" data-dismissible="false" style="max-width:400px;">
+        <div data-role="header" data-theme="a">
+          <h1 id="WINLEVPRESERROR"></h1>
+        </div>
+        <div role="main" class="ui-content">          
+          <div id="winLevelPresetErrorsContainer">
+            
+          </div>
+          <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-a" data-rel="back">Ok</a>          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

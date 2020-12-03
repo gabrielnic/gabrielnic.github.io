@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <title>
+      NeoLogica WebViewer
+    </title>
+    <link href="style/Mobile.css" rel="stylesheet"></link>
+    <link href="style/PatientAndStudy.css" rel="stylesheet"></link>
+    <link href="style/StudyDlg.css" rel="stylesheet"></link>
+    <link href="style/SRDlg.css" rel="stylesheet"></link>
+    <style type="text/css">
+      body
+      {
+        
+        height: 100%;
+        background-color: black;
+        font-family: "Tahoma", Trebuchet, Verdana, Helvetica, Tahoma, sans-serif;
+        font-size:12px;
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      div
+      {
+        padding: 0px;
+      }
+      img
+      {
+        padding:0px;
+      }
+    </style>
+    <script type="text/javascript" src="JSLib/StringTable.js" ></script>
+<!--    <script type="text/javascript" src="jquery/jquery.js"></script>
+    <script type="text/javascript" src="jquery/jquery.center.js"></script>
+    <script type="text/javascript" src="jquery/jquery.ui.js"></script>
+    <script type="text/javascript" src="jquery/jquery.ui.interaction.js"></script>
+    <script type="text/javascript" src="jquery/jquery.ui.effects.js"></script>-->
+    
+
+    
+<!--    <script type="text/javascript" src="JSLib/Utils.js" ></script>
+    <script type="text/javascript" src="JSLib/json2.js" ></script>
+    <script type="text/javascript" src="JSLib/DICOMImage.js" ></script>
+    <script type="text/javascript" src="JSLib/DICOMSR.js" ></script>
+    <script type="text/javascript" src="JSLib/DICOMPDF.js" ></script>
+    <script type="text/javascript" src="JSLib/ImagePanel.js" ></script>
+    <script type="text/javascript" src="JSLib/LoaderThread.js" ></script>
+    <script type="text/javascript" src="JSLib/GlobalEventHandler.js" ></script>
+    <script type="text/javascript" src="JSLib/Settings.js"></script>
+    <script type="text/javascript" src="JSLib/ThumbnailPanel.js"></script>
+    <script type="text/javascript" src="JSLib/Viewer.js" ></script>
+    <script type="text/javascript" src="JSLib/StudyDlg.js" ></script>
+    <script type="text/javascript" src="JSLib/SRDlg.js" ></script>-->
+    <script type="text/javascript" src="JSLib/application.js" ></script>  
+    <script type="text/javascript" >
+      var RELite = {};
+      RELite.Settings = {};
+    </script>  
+    <script type="text/javascript" src="JSLib/DICOMTree.js" ></script>
+    
+    <script type="text/javascript">
+      function BlockMove(event)
+      {
+        // Tell Safari not to move the window.
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+      }
+      function startViewer()
+      {
+        
+      }
+      
+    </script>
+
+  </head>
+  <body onload="Viewer.init(true);">
+    <div id="viewerContainer" style="background-color: black; width: 100%; height: 100%;position: absolute; left: 0px; top: 0px;" data-role="page">
+
+    </div>
+    <div id="showStudyDlg" class="tool studyDlg" style="position: absolute; right: 0px; top: 0px;" onclick="Viewer.studyDlg.show();" >
+      &nbsp;
+    </div>
+    <div id="overlayTool" class="tool overlay" style="position: absolute; right: 0px; top: 32px;" onclick="Viewer.toggleOverlay()">
+      &nbsp;
+    </div>
+    <div id="nextFrameTool" class="tool thumbPanel" style="position: absolute; right: 0px; top: 64px;" onclick="Viewer.thumbnailPanel.toggle(); $('.tool.thumbPanel').toggleClass('selected')">
+      &nbsp;
+    </div>
+    <div id="nextFrameTool" class="tool selectLayout" style="position: absolute; right: 0px; top: 96px;" onclick="Viewer.toggleLayoutDialog()">
+      &nbsp;
+    </div>
+    <div id="prevFrameTool" class="tool prevFrame" style="position: absolute; right: 0px; top: 128px;" onmousedown="Viewer.showPrevFrameOnSelectedPanel()">
+      &nbsp;
+    </div>
+    <div id="nextFrameTool" class="tool nextFrame" style="position: absolute; right: 0px; top: 160px;" onmousedown="Viewer.showNextFrameOnSelectedPanel()">
+      &nbsp;
+    </div>
+    
+
+    <!-- Layout Dialog //-->
+    <div id="layoutDialog" style="position: absolute; display: none;width: 200px; height: 210px;background-color: white; border-radius: 5px;">
+      <table style="width: 100%">
+        <tr>
+          <td>1x1</td><td>1x2</td><td>1x3</td>
+        </tr>
+        <tr>
+          <td>2x1</td><td>2x2</td><td>2x3</td>
+        </tr>
+        <tr>
+          <td>3x1</td><td>3x2</td><td>3x3</td>
+        </tr>
+      </table>
+    </div>
+    <!-- EO Layout Dialog //-->
+  </body>
+</html>

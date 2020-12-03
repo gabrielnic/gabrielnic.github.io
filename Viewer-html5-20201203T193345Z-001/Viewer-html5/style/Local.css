@@ -1,0 +1,831 @@
+/*
+    Created on : May 20, 2014, 2:59:59 PM
+    Author     : Carlo Pastorino
+*/
+
+/* GENERICS */
+.break
+{
+  clear: both;
+}
+
+/* Query result */
+
+div.resultCount
+{
+  display: none;
+}
+
+.queryDialog
+{
+  position: absolute;
+  display: none;
+}
+
+.queryDialogContent
+{
+  width: 900px;
+  height: 500px;
+  overflow-y: auto;
+  background-color: white;
+  text-align: left;
+  line-height: normal;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.queryDialogHeader
+{
+  padding-top: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ea533f;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  line-height: normal;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
+}
+
+.queryDialogTip
+{
+  background-color: #FFF;
+  padding: 8px 4px;
+  text-align: left;
+  border-bottom: 1px solid #C0C0C0;
+}
+
+div.footer
+{
+  background-color: white;
+  line-height: normal;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top: 1px solid silver;
+}
+
+div.localEyeButton
+{
+  background-color: #EA533F;
+  color: #FFF;
+  position: absolute;
+  top: 0px;
+  right: 142px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+div.openAllButton
+{
+  background-color: #EA533F;
+  color: #FFF;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-top-right-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
+
+.resultContainer
+{
+  cursor: default;
+  position: relative;
+  border-bottom: 1px solid #cbcbcb;
+  padding-top: 5px;
+}
+
+.resultContainer.image
+{
+  cursor: pointer;
+  position: static;
+  float: left;
+  background-color: darkgrey;
+  border: 1px solid black;
+  margin-right: 3px;
+}
+
+.resultContainer div.dataNeeded
+{
+  display: none;
+}
+
+.resultContainer.odd:hover, .resultContainer.even:hover
+{
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ea533f;
+}
+
+
+.resultContainer.odd
+{
+  background-color: #ffffff;
+}
+
+.resultContainer.even
+{
+  background-color: #ffffff;
+}
+
+.resultContainer div.leftCol
+{
+  position: absolute;
+  width: 60px;
+  height: 100%;
+}
+
+.resultContainer  div.leftCol div.privateTag.private
+{
+  border: 1px solid darkred;
+  border-top: none;
+  border-left: none;
+  color: #fefefe;
+  text-shadow: black 0px 1px 0px;
+  background-position: 0px 0px;
+}
+
+.resultContainer  div.leftCol div.privateTag.public
+{
+  border: 1px solid #333;
+  border-top: none;
+  border-left: none;
+  background-position: 0px -18px;
+  /*color: #fefefe;*/
+  color: #333;
+  text-shadow: #e0e0e0 0px 1px 0px;
+}
+
+.resultContainer .leftCol div.checkImgContainer
+{
+  margin-top: 10px;
+  text-align: center;
+  height: 52px;
+
+}
+
+.resultContainer .leftCol span.checkUID
+{
+  display: none;
+}
+
+.resultContainer .leftCol img.itemImage
+{
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+}
+
+span.itemOpenImg
+{
+  margin-top: 4px;
+  background-image: url('../images/actionSprite.png');
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background-repeat: no-repeat;
+  background-position: -42px -121px;
+  cursor: pointer;
+}
+
+span.itemOpenImg:hover
+{
+  background-position: -42px -141px;
+}
+
+span.itemOpenImg.opened
+{
+  background-image: url('../images/actionSprite.png');
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background-repeat: no-repeat;
+  background-position: -62px -121px;
+  cursor: pointer;
+}
+
+span.itemOpenImg.opened:hover
+{
+  background-position: -62px -141px;
+}
+
+.resultContainer div.rightCol
+{
+  margin-left: 60px;
+  margin-bottom: 10px;
+
+}
+
+.resultContainer.male
+{
+  background-image: url('../images/male.png');
+  background-position: right 5px;
+  background-repeat: no-repeat;
+}
+
+.resultContainer.female
+{
+  background-image: url('../images/female.png');
+  background-position: right 5px;
+  background-repeat: no-repeat;
+}
+
+.resultContainer div.rightCol div.resultFirstLine
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.resultContainer div.rightCol div.resultFirstLine div.patientNameField
+{
+  position: relative;
+  font-size: 15px;
+  font-weight: bold;
+  float: left;
+  width: 30%;
+  height: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.resultContainer:hover div.patientNameField
+{
+  color: #ea533f;
+}
+
+.resultContainer div.rightCol div.resultFirstLine div.firstLineParamField
+{
+  position: relative;
+  float: left;
+  width: 23%;
+  height: 22px;
+}
+
+.resultContainer div.rightCol div.resultFirstLine div.statusField
+{
+  float: left;
+  width: 14%;
+  height: 22px;
+}
+
+.resultContainer div.rightCol div.resultFirstLine div.actionsPanelField
+{
+  float: left;
+  width: 25%;
+  height: 22px;
+
+}
+
+.resultContainer.patient:hover > div.rightCol > div.resultFirstLine > div.actionsPanelField
+{
+  visibility: visible;
+}
+
+.resultContainer.study:hover > div.rightCol > div.resultFirstLine > div.actionsPanelField
+{
+  visibility: visible;
+}
+
+.resultContainer div.rightCol div.resultLine
+{
+  width: 100%;
+  clear: both;
+  padding-bottom: 5px;
+}
+
+.resultContainer div.rightCol div.resultLine div.lineParamField
+{
+  float: left;
+  width: 30%;
+}
+
+ span.paramName
+{
+  font-weight: bold;
+  color: #555;
+}
+
+.resultContainer div.rightCol div.statusField span.status
+{
+
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: none;
+}
+
+.resultContainer div.rightCol div.statusField span.status.reportPresent
+{
+  background-image: url('../images/reportPresent.png');
+  display: inline-block;
+  cursor: pointer;
+}
+
+.resultContainer div.rightCol div.statusField span.status.pdfPresent
+{
+  background-image: url('../images/pdfPresent.png');
+  display: inline-block;
+  cursor: pointer;
+}
+
+span.action
+{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+  background-image: url('../images/actionSprite.png');
+}
+
+span.action.show
+{
+  background-position: -60px -80px;
+}
+
+span.action.show:hover,
+span.action.show.selected
+{
+  background-position: -60px -100px;
+}
+
+span.action.show-nondicom
+{
+  background-position: -20px 0px;
+}
+
+span.action.show-nondicom:hover,
+span.action.show-nondicom.selected
+{
+  background-position: -20px -20px;
+}
+
+/* Series */
+
+div.seriesPanel
+{
+  /* display: none; */
+  padding-left: 60px;
+}
+
+div.seriesPanel div.seriesPanelLoader,
+div.fixedLoader
+{
+  height: 300px;
+  background-image: url('../../img/lpw_loader.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+
+}
+
+div.seriesResultContainer
+{
+  margin-bottom: 10px;
+  border: 1px solid #acacac;
+  background-color: white;
+  margin-right: 5px;
+  float: left;
+  width: 700px;
+}
+
+div.resultContainer.series div.actionPanel
+{
+  position: absolute;
+  right: 40px;
+  top: 0px;
+  margin-right: 3px;
+  margin-top: 3px;
+
+}
+
+div.resultContainer.series:hover div.actionPanel
+{
+  display: block;
+}
+
+
+
+div.resultContainer:hover div.seriesResultContainer
+{
+  margin-bottom: 10px;
+  border: 1px solid #ea533f;
+
+  margin-right: 5px;
+}
+
+div.seriesNumberField
+{
+  font-size: 15px;
+  font-weight: bold;
+  height: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+div.seriesResultContainer div.column1
+{
+  /*width: 50px; */
+  float: left;
+  padding-top: 5px;
+
+}
+
+div.seriesResultContainer div.column2
+{
+  width: 200px;
+  float: left
+}
+
+div.seriesResultContainer div.column3
+{
+  float: left;
+}
+
+div.column1 > div,
+div.column2 > div,
+div.column3 > div
+{
+  padding: 5px;
+}
+
+/* ------------ */
+
+div#srDialogContainer
+{
+  display:none;
+  position: absolute;
+  box-shadow: 0px 0px 15px #aeaeae;
+  line-height: normal;
+  background-color: white;
+  text-align: left;
+  z-index: 103!important;
+}
+
+.srDialogHeader
+{
+  padding-top: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ea533f;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  line-height: normal;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.srDialogHeader div.title
+{
+  float: left;
+}
+
+
+.srDialogHeader div.closeButton,
+#srChooser > div.header > div.closeButton,
+#pdfChooser > div.header > div.closeButton
+{
+  float: right;
+  width: 24px;
+  height: 24px;
+  background-image: url('../images/windowClose.png');
+  background-position: center center;
+  cursor: pointer;
+}
+
+div#srContent
+{
+  width: 900px;
+  height: 500px;
+  overflow-y: auto;
+  background-color: white;
+  text-align: left;
+  line-height: normal;
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 8px;
+}
+
+
+div#srContent table td
+{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+div#srContent h1,
+div#srContent h2,
+div#srContent div
+{
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+div#srChooser,
+div#pdfChooser
+{
+  position: absolute;
+  line-height: normal;
+  background-color: white;
+  box-shadow: 0px 0px 15px #ccc;
+  z-index: 102!important;
+}
+
+div#srChooser div.header,
+div#pdfChooser div.header
+{
+  padding-top: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ea533f;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  line-height: normal;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+div#srChooser div.content,
+div#pdfChooser div.content
+{
+  height: 300px;
+  width: 300px;
+  overflow-y: auto;
+  background-color: white;
+  text-align: left;
+  line-height: normal;
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 8px;
+}
+
+div#srChooser div.content div.srRow,
+div#pdfChooser div.content div.srRow
+
+{
+  padding: 6px 4px;
+  cursor: pointer;
+}
+
+div#srChooser div.content div.srRow:hover,
+div#pdfChooser div.content div.srRow:hover
+{
+  background-color: #f0f0f0;
+}
+
+div.lpLogo
+{
+  background-image: url('../images/LogiPACSLogo.png');
+  float: left;
+  height: 30px;
+  width: 112px;
+}
+
+div.nlLogo
+{
+  background-image: url('../images/NeoLogica_small.png');
+  float: right;
+  height: 30px;
+  width: 173px;
+}
+
+#shareToDropBoxPopup
+{
+  background-color: #ebebeb;
+  position: absolute;
+  display: none;
+  z-index: 11;
+  padding: 16px;
+  margin-top: 5px;
+  box-shadow: 15px 10px 15px #000;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius:4px;
+  border-top-right-radius: 4px;
+  text-shadow: none;
+}
+
+#shareToDropBoxPopup div.pointer
+{
+  position: relavite;
+  width: 48px;
+  background-color: #ebebeb;
+  height: 5px;
+  top: -5px;
+  left: 0px;
+}
+
+#shareToDropBoxDlg
+{
+  display: none;
+  position: absolute;
+
+  border-radius: 4px;
+  background-color: #fff;
+  /*border: 1px solid #f3f3f3;*/
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 374px;
+  text-shadow: none;
+  overflow-x: hidden;
+  padding-top: 32px;
+  padding-bottom: 0px;
+  z-index: 17;
+}
+
+#shareToDropBoxDlg > div.window {
+  width: 748px;
+  position: relative;
+}
+
+#shareToDropBoxDlg div.page {
+  float: left;
+  width: 374px;
+}
+
+#shareToDropBoxDlg  div.icon {
+  margin: auto;
+}
+#shareToDropBoxDlg  div.icon > img
+{
+  width: 128px;
+  height: 128px;
+}
+
+#shareToDropBoxDlg  div.title
+{
+  color: #354156;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: bold;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 32px;
+  padding-bottom: 5px;
+  font-size: 1.1em;
+}
+
+#shareToDropBoxDlg  div.message
+{
+  color: #9aa0ad;
+  padding-top: 10px;
+  padding-bottom: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: .9em;
+  letter-spacing: 1px;
+  height: 120px;
+}
+
+#EXP_DROP_EXPMODE
+{
+  color: #354156;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#shareToDropBoxDlg  div.action
+{
+  background-color: #EA533F;
+  color: #fafafa;
+  text-transform: uppercase;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+}
+
+#shareToDropBoxDlg  div.action:hover
+{
+  background-color: #de4f3c;
+}
+
+div.expModeFileName
+{
+  padding: 12px 0px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2em;
+  color: #354156;
+}
+
+div.neoOverlay
+{
+  position: absolute;
+  display: none;
+  top: 0px;
+  bottom:0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 16;
+}
+
+#nonDICOMFilesDlg
+{
+  display: none;
+  position: absolute;
+  border-radius: 4px;
+  background-color: #fff;
+  /*border: 1px solid #f3f3f3;*/
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 374px;
+  text-shadow: none;
+  overflow-x: hidden;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  z-index: 17;
+}
+
+#nonDICOMFilesDlg div.title
+{
+  padding: 10px 0px;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-bottom: 2px solid #EA533F;
+}
+
+#nonDICOMFilesDlg div.action {
+
+  background-color: #EA533F;
+  color: #fafafa;
+  text-transform: uppercase;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+
+}
+
+.nonDICOMFile.template
+{
+  display: none;
+}
+
+#nonDICOMFilesList
+{
+  list-style-type: none;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+  height: 450px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+
+#nonDICOMFilesList > li
+{
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-bottom: 1px solid silver;
+}
+
+#nonDICOMFilesList > li:hover
+{
+  background-color: #f7f7f7;
+}
+
+#nonDICOMFilesList > li span.size
+{
+  float: right;
+}
+
+#nonDICOMFilesList > li > a.name
+{
+  display: inline-block;
+  color: #333;
+  padding: 4px 0px;
+  width: 100%;
+  text-decoration: none;
+}
+
+#nonDICOMFilesList > li > a.name > .name-text
+{
+  display: inline-block;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 280px;
+}

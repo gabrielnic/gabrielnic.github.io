@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="Viewer-html5/images/RemotEyeIcon.png" type="image/png" />
+    <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0;" /> -->
+    <title>LocalEye Lite</title>
+    <link rel="stylesheet"  href="Viewer-html5/style/jquery.mobile.css" />
+    <link rel="stylesheet" href="Viewer-html5/style/Mobile.css" />
+    <link rel="stylesheet" href="Viewer-html5/style/Local.css" />
+
+    <script type="text/javascript" src="Viewer-html5/jslib/StringTable.js"></script>
+    <script type="text/javascript" src="Viewer-html5/jquery/jquery.js"></script>
+    <script type="text/javascript">
+      $(document).on("mobileinit", function () {
+        $.mobile.orientationChangeEnabled = false;
+        $.mobile.initializePage = false;
+        $.mobile.pushStateEnabled = false;
+      });
+    </script>
+
+    <script type="text/javascript" src="Viewer-html5/jslib/Settings.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/application.js"></script>
+
+<!--    <script type="text/javascript" src="Viewer-html5/jquery/jquery.mobile.js"></script>
+    <script type="text/javascript" src="Viewer-html5/jquery/jquery.center.js"></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/eventsource.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/slider.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Device.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/SeriesPanel.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Utils.js" ></script>                
+    <script type="text/javascript" src="Viewer-html5/jslib/CredentialManager.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Action.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/ToolsPanel.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/DesktopToolsPanelForLocalViewer.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/MobileToolsPanel.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/MainViewPanel.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/GenericLayout.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/MobileLayout.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/DesktopLayout.js" ></script>
+
+    <script type="text/javascript" src="Viewer-html5/jslib/Viewer.js" ></script>  
+    <script type="text/javascript" src="Viewer-html5/jslib/Viewer.Cache.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Manager.js" ></script>  
+    <script type="text/javascript" src="Viewer-html5/jslib/Downloader.js" ></script> 
+    <script type="text/javascript" src="Viewer-html5/jslib/DataSetStreamHandler.js" ></script> 
+    <script type="text/javascript" src="Viewer-html5/jslib/DataSet.js" ></script> 
+    <script type="text/javascript" src="Viewer-html5/jslib/WinLevLut.js" ></script>  
+    <script type="text/javascript" src="Viewer-html5/jslib/DICOMImage.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/DICOMSR.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/DICOMPDF.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/InvalidDICOMImage.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/ViewingSeries.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/GlobalEventHandler.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/ToolsRepository.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/Shape.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/MeasLine.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/ReferenceLine.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/MeasRectArea.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/MeasElliptArea.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/MeasAngle.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Shapes/MeasDensity.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/WindowLevel.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/Zoom.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/Pan.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/Scroll.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/MeasLine.js" ></script>    
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/MeasRectArea.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/MeasElliptArea.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/MeasAngle.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/MeasDensity.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/Tools/Magnifier.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/ThumbnailPanel.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/HeartBeatThread.js" ></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/JPEGDownloadSerializer.js" ></script>    -->
+
+    <script type="text/javascript" src="Viewer-html5/jslib/DICOMTree.js"></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/NONDICOMTree.js"></script>
+    <script type="text/javascript" src="Viewer-html5/jslib/neologica.utils.js"></script>
+    <script type="text/javascript">
+
+      var el = document.createElement("canvas");
+      if (!(el.getContext && el.getContext('2d')))
+      {
+        window.location.href = "Viewer-html/INDEX.htm";
+      }
+      RELite.Viewer.isDisplay = true;
+    </script>
+    <script type="text/javascript" >
+      document.addEventListener("DOMContentLoaded", RELite.Manager.initDisplayStudy, false);
+    </script>
+  </head>
+
+  <body style="background-color: black; text-align: center; text-shadow: none;">
+    <div data-role="page" data-theme="a" id="mainPage" style="background-color: black; height: 100%">
+      <div role="main" class="ui-content">
+        <!-- defaultpanel  -->
+        <div data-role="panel" id="drawer" data-theme="a" data-display="overlay">
+          <div id="drawerActionContainer">
+
+          </div>
+          <div class="ui-content">
+            <div>              
+              <button data-href="#aboutDlg" data-role="button" id="ABOUT1" class="ui-btn ui-corner-all aboutButton"></button>
+            </div>
+          </div>
+        </div>
+        <!-- Window/Level Presets -->
+        <div id="windowLevelPresetsPopup" data-role="popup" data-theme="b">
+          <ul data-role="listview" data-inset="true" >
+          </ul>
+        </div>
+        <div id="shareToDropBoxPopup">
+          <div class="pointer"></div>
+          <div id="EXP_DROP_POP">&nbsp;</div>
+        </div>
+        <div id="shareToDropBoxDlg">
+          <div class="window">
+            <div class="page">
+              <div class="icon">
+                <img src="Viewer-html5/images/svgs/action.esp.svg" />
+              </div>
+              <div class="title"><span id="SHRE_YOUR_EXAM">Share your exam!</span></div>
+              <div class="message">
+                <div id="EXP_DROP_HINT"></div>
+                <div id="EXP_DROP_EXPMODE"></div>
+              </div>
+              <div class="action" id="exportToDropBoxExpertModeButton"><span id="OPEN_LE">Expert mode</span></div>
+            </div>
+            <div class="page">
+              <div class="icon">
+                <img src="Viewer-html5/images/RemotEyeIcon.png" />
+              </div>
+              <div class="title"><span id="OPEN_LE1">Expert mode</span></div>
+              <div class="message" id="expertModeTutorial"></div>
+              <div class="action" id="exportToDropBoxOkButton">Ok</div>
+            </div>
+          </div>
+        </div>
+        <div id="neoOverlay" class="neoOverlay">&nbsp;</div>
+        <div id="toolbarContainer">
+          <div style="float: left;margin: 0px; padding: 0px; height: 48px; " id="tools">
+            <div class="actionContainer" id="scroll">
+              <svg height="48" width="48"
+                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/tool.SelectStack.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="pan">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/tool.Pan.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="zoom">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/tool.Zoom.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="resetTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.resetImage.svg" ></image>
+              </svg>
+            </div>
+          </div>
+          <div style="float: right;margin: 0px; padding: 0px; height: 48px; " id="rightToolbar">
+            <button class="actionContainer" id="openWithLocalEye" data-role="none">
+              <svg  height="48" width="160"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="160" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.launchLocalEye.svg" ></image>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                   x="40" y="0" width="120" height="48">
+                <text x="50%" y="30" text-anchor="middle" id="OPEN_LE2"></text>  
+              </svg> 
+              </svg>
+            </button>
+            <div class="actionContainer" id="exportToDropbox">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.esp.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="showNonDICOM">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.showNonDICOM.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="forceCineTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.forceCine.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="rotateCounterClockwiseTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.rotateCounterClockwise.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="rotateClockwiseTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.rotateClockwise.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="flipHorizontalTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.flipHorizontal.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="flipVerticalTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.flipVertical.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="prevSeriesTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.prevSeries.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="nextSeriesTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.nextSeries.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="prevFrameTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.navigatePreviousFrame.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="nextFrameTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.navigateNextFrame.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="selectLayoutTool">
+              <svg  height="48" width="48"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.displayMode.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="overlayTool">
+              <svg height="48" width="48"
+                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#7be1b2" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.imageToggleTextOverlays.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="showStudies">
+              <svg height="48" width="48"
+                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                <rect width="48" height="48"  fill="#ebebeb" >
+                </rect>
+                <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/find.svg" ></image>
+              </svg>
+            </div>
+            <div class="actionContainer" id="menuOverflow">
+              <svg height="48" width="48"
+                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+              <rect width="48" height="48"  fill="#ebebeb" >
+              </rect>
+              <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.menuOverflow.svg" ></image>
+              </svg>
+            </div>
+          </div>
+          <div style="clear: both"></div>
+        </div>
+        <div id="viewerContainer" style="background-color: black; position: absolute; top: 48px; left: 0px;padding: 0px; margin: 0px; border: none;line-height: 0; overflow: hidden;" ></div>
+
+
+        <!-- Layout Dialog //-->
+        <div id="layoutDialog" >
+          <table style="width: 100%">
+            <tr>
+              <td>1x1</td><td>1x2</td><td>1x3</td>
+            </tr>
+            <tr>
+              <td>2x1</td><td>2x2</td><td>2x3</td>
+            </tr>
+            <tr>
+              <td>3x1</td><td>3x2</td><td>3x3</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="seriesActionsPanel" id="seriesActionsPanel">
+          <svg id="prevSeriesSliderTool" height="48" width="48"
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.prevSeries.svg" ></image>
+          </svg>
+          <svg id="nextSeriesSliderTool" height="48" width="48"
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.nextSeries.svg" ></image>
+          </svg>
+          <svg id="playAction" height="48" width="48"
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="48" height="48"  fill="#ebebeb" >
+          </rect>
+          <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.play.svg" ></image>
+          </svg>
+          <!--      <svg id="pauseAction" height="48" width="48"
+                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                  <rect width="48" height="48"  fill="#ebebeb" >
+                  </rect>
+                  <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.pause.svg" ></image>
+                </svg>-->
+          <!--
+          <svg id="stopAction" height="48" width="48"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+            <rect width="48" height="48"  fill="#ebebeb" >
+            </rect>
+            <image x="8" y="8" height="32" width="32"  xlink:href="Viewer-html5/images/svgs/action.stop.svg" ></image>
+          </svg>
+          //-->
+          <!--      <span id="DEF_FPS" style="position:relative; bottom: 17px; color: #f7f7f7">Frames per second: </span>
+                <span id="defFPS" style="position:relative; bottom: 17px; color: #f7f7f7"></span>-->
+          <svg id="slider" height="48" width="200"
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <rect width="170" y="21" x="15" height="6"  fill="#eee" class="bar">
+          </rect>
+          <svg height="48" width="30" x="0" class="picker">
+          <rect y="9" x="0" rx="3" ry="3" height="30"  width="30" fill="#6ebceb">
+          </rect>
+          <text x="5" y="28" fill="white" class="text" ></text>
+          </svg>
+          </svg>
+        </div>
+        <img src="Viewer-html5/images/cine.png" style="display: none" id="cineImg" />
+      </div>
+      <div id="scrollBarPickerPopupContainer" class="hidden">
+        <div class="relative">
+          <div class="scrollbar-picker-popup">
+            <span id="scrollBarPikerFrameNum"></span>
+          </div>
+          <div class="scrollbar-picker-popup-indicator"></div>
+        </div>
+      </div>
+      <div id="nonDICOMFilesDlg">
+        <div class="page">
+          <div class="title"><span id="SHOW_NON_DICOM_FILES"></span></div>
+          <ul id='nonDICOMFilesList'>
+
+          </ul>
+          <div class="action" id="closeNonDICOMFilesDlg"><span id="CLOSE"></span></div>
+        </div>
+        <li class="nonDICOMFile template">
+          <a class="name" target="_blank"><span class="name-text"></span><span class="size"></span></a>
+        </li>
+      </div>
+    </div>
+    <div data-role="page" data-dialog="true" class="aboutDlg" id="aboutDlg" data-theme="a" data-close-btn="none">
+      <div>
+        <div data-role="header" data-theme="a">
+          <h1 id="ABOUT_H1"></h1>
+        </div>
+        <div class="ui-content" role="main" data-theme="a">
+          <table align="center"  class="aboutTable" >
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  <img src="Viewer-html5/images/LocalEyeLiteAbout.png" alt="RemotEye Lite Logo" style="margin-left: 7px">
+                </td>
+              </tr>
+              <tr>
+                <td class="logo"><!-- <img src="../images/RemotEyeIcon.png" width="48"/>--></td>
+                <td >
+                  <b>LocalEye Lite, version 2.2.3</b><br/>
+                  <span>Review web DICOM viewer</span>
+                  <!-- <span id="ABOUT_DEV"></span> -->
+                  <br />
+                  <span id="COPYRIGHT"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="logo"><img src="Viewer-html5/images/Manufacturer.png" alt="Manufacturer"/></td>
+                <td >
+                  NeoLogica s.r.l. <br/> 
+                  Strada Ville, 58 <br/>
+                  17014 - Cairo Montenotte (SV) <br/>
+                  Italy <br />
+                  <br />
+                  Contact NeoLogica at: <br/>
+                  <a href="mailto:info@neologica.it">info@neologica.it</a> <br/>
+                  <a href="http://www.neologica.it">http://www.neologica.it</a><br/>
+                </td>
+              </tr>
+              <tr style="display: none">
+                <td class="logo"><img src="Viewer-html5/images/serialNumber.png" alt="Software serial number"/></td>
+                <td >
+                  <p>Software serial number &lt;<span id="swSerialNumber"></span>&gt;</p>
+                </td>
+              </tr>              
+            </tbody>
+          </table>
+          <a data-role="button" href="#mainPage" id="aboutOkButton" >Ok</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
